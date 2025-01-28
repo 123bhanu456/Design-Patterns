@@ -1,0 +1,22 @@
+States:
+
+Idle State
+Selection State
+Payment State
+Accepted payment
+Cancelled Payment
+
+
+
+Actions:
+
+Insert Coin
+Select Item
+Continue Transaction
+Cancel Transaction
+Dispense Item
+
+
+
+
+
