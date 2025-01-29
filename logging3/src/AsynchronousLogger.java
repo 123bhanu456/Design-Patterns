@@ -1,13 +1,13 @@
 public class AsynchronousLogger extends LoggerFactory {
 
     @Override
-    public void fn(String msg) {
+    public void notify(String msg) {
 
-        new Thread(() -> super.fn2("This message is using async logger   "+msg)).start();
+        new Thread(() -> super.fn("This message is using async logger   "+msg)).start();
     }
 
     @Override
     public LoggerFactory createLogger() {
-        return new AsynchronousLogger();
+        return this;
     }
 }

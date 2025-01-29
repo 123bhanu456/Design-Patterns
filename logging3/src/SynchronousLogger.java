@@ -1,14 +1,14 @@
 public class SynchronousLogger extends LoggerFactory {
 
 
-    public void fn(String msg) {
+    public void notify(String msg) {
 
-        super.fn2("This message is using sync logger    "+msg);
+        super.fn("This message is using sync logger    "+msg);
 
     }
 
     @Override
     public LoggerFactory createLogger() {
-        return new SynchronousLogger();
+        return this;
     }
 }
