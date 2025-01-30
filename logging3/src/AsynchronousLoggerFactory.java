@@ -1,4 +1,4 @@
-public class AsynchronousLogger extends LoggerFactory {
+public class AsynchronousLoggerFactory extends LoggerFactory {
 
     @Override
     public void notify(String msg) {

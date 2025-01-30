@@ -1,4 +1,4 @@
-public class SynchronousLogger extends LoggerFactory {
+public class SynchronousLoggerFactory extends LoggerFactory {
 
 
     public void notify(String msg) {

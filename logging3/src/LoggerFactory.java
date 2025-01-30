@@ -1,4 +1,4 @@
-public class LoggerFactory implements Logger,Publisher {
+public abstract class LoggerFactory implements Logger,Publisher {
 
 
     @Override
@@ -26,24 +26,9 @@ public class LoggerFactory implements Logger,Publisher {
         for (Observer o : s) o.print(msg);
     }
 
-    public SynchronousLogger getSynchronousLogger(){
-        return new SynchronousLogger();
-    }
 
-    public AsynchronousLogger getAsynchronousLogger(){
-        return new AsynchronousLogger();
-    }
+    public abstract LoggerFactory createLogger();
+    public abstract void notify(String msg);
 
 
-
-
-
-
-
-    public LoggerFactory createLogger(){
-        return this;
-    }
-    public void notify(String msg){
-
-    }
 }

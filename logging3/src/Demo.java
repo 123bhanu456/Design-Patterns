@@ -2,13 +2,13 @@ public class Demo {
 
     public static void main(String[] args) {
 
-        LoggerFactory loggerFactory=new LoggerFactory();
+
 
         Observer consoleLog = new ConsoleLog();
         Observer serverLog = new ServerLog();
 
 
-        Logger syncLogger=loggerFactory.getSynchronousLogger();
+        Logger syncLogger=new SynchronousLoggerFactory();
 
 
 
@@ -19,7 +19,7 @@ public class Demo {
         syncLogger =new TimeLogger(syncLogger);
         syncLogger =new LevelLogger(syncLogger,3);
 
-        Logger asyncLogger= loggerFactory.getAsynchronousLogger();
+        Logger asyncLogger= new AsynchronousLoggerFactory();
 
 //        syncLogger.removeObserver(serverLog);
 
