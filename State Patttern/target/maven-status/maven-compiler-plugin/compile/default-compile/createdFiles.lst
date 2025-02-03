@@ -1,0 +1,10 @@
+com/vendingmachine/VendingMachine/Payment.class
+com/vendingmachine/VendingMachine/Main.class
+com/vendingmachine/VendingMachine/CanceledPayment.class
+com/vendingmachine/VendingMachine/VendingMachine.class
+com/vendingmachine/VendingMachine/PaymentAccepted.class
+com/vendingmachine/VendingMachine/Idle.class
+com/vendingmachine/VendingMachine/MongoDB.class
+com/vendingmachine/VendingMachine/Item.class
+com/vendingmachine/VendingMachine/Select.class
+com/vendingmachine/VendingMachine/State.class

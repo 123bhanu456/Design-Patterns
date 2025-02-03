@@ -1,4 +1,6 @@
-public class Idle implements State{
+package com.vendingmachine.VendingMachine;
+
+public class Idle implements State {
 
     VendingMachine vm;
 
@@ -6,15 +8,16 @@ public class Idle implements State{
         this.vm=vm;
     }
     @Override
-    public void insertCoin() {
-      System.out.println("Successfully inserted Coin");
+    public void insertCard() {
+      System.out.println("Successfully inserted Card");
+
       vm.setState(vm.getSelectState());
     }
 
 
 
     @Override
-    public void selectItem() {
+    public void selectItem(String name) {
        System.out.println("First u need to insert Coin");
     }
 

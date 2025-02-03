@@ -1,18 +1,18 @@
-import javax.naming.event.EventDirContext;
+package com.vendingmachine.VendingMachine;
 
-public class CanceledPayment implements State{
+public class CanceledPayment implements State {
 
     VendingMachine vm;
     public CanceledPayment(VendingMachine vm){
         this.vm=vm;
     }
     @Override
-    public void insertCoin() {
+    public void insertCard() {
         System.out.println("u Cancelled Payment pls Collect your coin first");
     }
 
     @Override
-    public void selectItem() {
+    public void selectItem(String name) {
         System.out.println("u Cancelled Payment pls Collect your coin first");
     }
 
@@ -28,7 +28,8 @@ public class CanceledPayment implements State{
 
     @Override
     public void dispenseItem() {
-        System.out.println("U cancelled payment so here is your token");
+        System.out.println("U cancelled payment ");
+        vm.itemName=" ";
         vm.setState(vm.getIdleState());
     }
 }

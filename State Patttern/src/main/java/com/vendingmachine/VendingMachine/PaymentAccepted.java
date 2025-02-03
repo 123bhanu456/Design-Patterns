@@ -1,4 +1,6 @@
-public class PaymentAccepted implements State{
+package com.vendingmachine.VendingMachine;
+
+public class PaymentAccepted implements State {
 
     VendingMachine vm;
 
@@ -6,12 +8,12 @@ public class PaymentAccepted implements State{
         this.vm = vm;
     }
     @Override
-    public void insertCoin() {
+    public void insertCard() {
         System.out.println("Take out the Desired item first");
     }
 
     @Override
-    public void selectItem() {
+    public void selectItem(String name) {
         System.out.println("Take out the Desired item first");
     }
 
@@ -27,8 +29,11 @@ public class PaymentAccepted implements State{
 
     @Override
     public void dispenseItem() {
-        System.out.println("Item Dispatched");
-        vm.itemCount--;
+        System.out.println(vm.itemName+" Dispatched");
+        vm.items.get(vm.itemName).setCount(vm.items.get(vm.itemName).getCount()-1);
+        vm.dbHelper.updateItemCount(vm.itemName,vm.items.get(vm.itemName).getCount());
+        System.out.println(vm.itemName +" remaining count = "+vm.items.get(vm.itemName).getCount());
+        vm.itemName=" ";
         vm.setState(vm.getIdleState());
     }
 }

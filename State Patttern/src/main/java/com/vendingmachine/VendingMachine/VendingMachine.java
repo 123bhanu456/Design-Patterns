@@ -1,15 +1,27 @@
-public class VendingMachine implements State{
+package com.vendingmachine.VendingMachine;
 
-    int itemCount=0;
+import java.util.Map;
+
+public class VendingMachine implements State {
+
+    Map<String, Item> items;
+    MongoDB dbHelper;
+    double balance;
+
+
+
     State idle=new Idle(this);
     State select=new Select(this);
     State payment=new Payment(this);
     State paymentAccepted=new PaymentAccepted(this);
     State canceledPayment=new CanceledPayment(this);
     State state=idle;
+    String itemName;
 
-     public VendingMachine(int itemCount){
-         this.itemCount=itemCount;
+     public VendingMachine(){
+         dbHelper = new MongoDB();
+         items = dbHelper.loadItems();
+         balance = dbHelper.getMachineBalance();
 
      }
 
@@ -40,13 +52,13 @@ public class VendingMachine implements State{
 
 
     @Override
-    public void insertCoin() {
-        state.insertCoin();
+    public void insertCard() {
+         state.insertCard();
     }
 
     @Override
-    public void selectItem() {
-        state.selectItem();
+    public void selectItem(String name) {
+        state.selectItem(name);
     }
 
     @Override
@@ -62,6 +74,10 @@ public class VendingMachine implements State{
     @Override
     public void dispenseItem() {
         state.dispenseItem();
+    }
+
+    public void DisplayBalance(){
+         System.out.println("Total amount Collected by Vending Machine = "+dbHelper.getMachineBalance());
     }
 
 

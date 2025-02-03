@@ -1,22 +1,25 @@
-public class Payment implements State{
+package com.vendingmachine.VendingMachine;
+
+public class Payment implements State {
     VendingMachine vm;
     public Payment(VendingMachine vm){
         this.vm=vm;
     }
 
     @Override
-    public void insertCoin() {
+    public void insertCard() {
         System.out.println("First complete the ongoing payment");
     }
 
     @Override
-    public void selectItem() {
+    public void selectItem(String name) {
         System.out.println("Already selected");
     }
 
     @Override
     public void continueProcess() {
         System.out.println("Payment Done");
+        vm.dbHelper.updateMachineBalance(vm.dbHelper.getMachineBalance()+vm.items.get(vm.itemName).getPrice());
       vm.setState(vm.getPaymentAcceptedState());
 
     }
