@@ -8,7 +8,7 @@ public class Main {
         VendingMachine vendingMachine=new VendingMachine();
 
         vendingMachine.insertCard();
-        vendingMachine.selectItem("Pepsi");
+        vendingMachine.selectItem("Snickers");
         vendingMachine.continueProcess();
         vendingMachine.dispenseItem();
 

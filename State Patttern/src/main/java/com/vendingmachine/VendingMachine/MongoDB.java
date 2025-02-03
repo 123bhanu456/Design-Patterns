@@ -1,5 +1,8 @@
 package com.vendingmachine.VendingMachine;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 import com.mongodb.client.*;
 import org.bson.Document;
 import java.util.*;
@@ -13,7 +16,15 @@ public class MongoDB {
     private MongoCollection<Document> collection;
 
     public MongoDB() {
-        mongoClient = MongoClients.create("mongodb+srv://kalahastribhanuprakash:LAIMu4DHpvtDk1TX@tekioncluster.irpbn.mongodb.net/?retryWrites=true&w=majority&appName=TekionCluster");
+        Properties properties = new Properties();
+        try (FileInputStream fis = new FileInputStream("src/main/resources/config.properties")) {
+            properties.load(fis);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        String mongoUri = properties.getProperty("MONGO_URI");
+        mongoClient = MongoClients.create(mongoUri);
         database = mongoClient.getDatabase(DATABASE_NAME);
         collection = database.getCollection(COLLECTION_NAME);
     }
