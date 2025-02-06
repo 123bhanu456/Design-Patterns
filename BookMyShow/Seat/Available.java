@@ -13,7 +13,7 @@ public class Available implements State{
     }
 
     @Override
-    public void pay() {
+    public void pay(int seat_id) {
         System.out.println("please book seats first");
     }
 

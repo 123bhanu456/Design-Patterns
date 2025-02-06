@@ -12,7 +12,7 @@ public class Booked implements State {
     }
 
     @Override
-    public void pay() {
+    public void pay(int seat_id) {
         System.out.println("This seat is already booked");
     }
 

@@ -2,9 +2,9 @@ package Seat;
 
 public class Seat {
 
-   private int seat_id;
-   private int row;
-   private int number;
+   int seat_id;
+   int row;
+   int number;
    State state;
 
    State available=new Available(this);
@@ -24,7 +24,7 @@ public class Seat {
    }
 
     public void pay(){
-      state.pay();
+      state.pay(seat_id);
    }
 
    public void undo(){

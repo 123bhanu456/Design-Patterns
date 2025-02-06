@@ -1,7 +1,13 @@
-import java.util.ArrayList;
-import java.util.List;
+package Booking;
 
-public class Theater {
+import Payment.PaymentFactory;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Theater implements TheaterInf{
 
     int Theater_id;
     String name;
@@ -9,65 +15,68 @@ public class Theater {
     List<Screen> screens;
     int max_total_Screens;
     List<Movie> current_movies;
+    Map<Movie,Screen> m;
 
-    Theater(int max_total_Screens, String name, String location, int Theater_id) {
+
+    public Theater(int Theater_id, int max_total_Screens, String name, String location) {
         this.name = name;
         this.location = location;
         this.Theater_id = Theater_id;
         this.max_total_Screens = max_total_Screens;
         screens = new ArrayList<Screen>(max_total_Screens);
-        int id=0;
-        for(int i=0;i<max_total_Screens;i++){
-            Screen s=new Screen(id,5,5);
-            screens.add(s);
-            id++;
-        }
         current_movies = new ArrayList<Movie>(max_total_Screens);
+        m= new HashMap<>();
     }
 
-    List<Movie> getCurrent_movies() {
-        return current_movies;
+    @Override
+    public void initMovieScreen(int id,int row,int column,ScreenType screenType){
+        screens.add(new Screen(id,row,column,screenType));
+
     }
 
+    @Override
     public void setCurrent_movies(Movie movie) {
         if (current_movies.size() == max_total_Screens) {
             System.out.println("Can not set movie as Screens are Full");
             return;
         }
-        screens.get(current_movies.size()).setMovie(movie);
+        if(current_movies.contains(movie)){
+            System.out.println("Booking.Movie already exist in this theater");
+            return;
+        }
+        m.put(movie,screens.getFirst());
         current_movies.add(movie);
 
     }
 
-    public List<Screen> getScreens() {
-        return screens;
-    }
 
-    public void book(Movie movie,int row,int column){
+    public void book(Movie movie, int sead_id){
         Screen s=getMovieScreen(movie);
-        if(s==null) {
-            System.out.println("No movie in this theater");
-            return;
-        }
         if(s.total_seats==0){
             System.out.println("theater is full");
         }
-        s.blockSeat(row,column);
+        s.blockSeat(sead_id);
         s.pay();
-        s.display_layout_afterBooking();
     }
 
 
     public Screen getMovieScreen(Movie movie) {
-        Screen x=null;
-        for (int i = 0; i < current_movies.size(); i++) {
-            if (current_movies.get(i) == movie) {
-                x = screens.get(i);
-            }
-        }
-        return x;
+        return m.get(movie);
 
     }
+
+    @Override
+    public void showMovies(){
+        for (int i = 0; i < current_movies.size(); i++) {
+            System.out.println("Screen -"+screens.get(i).screen_id+" "+current_movies.get(i).title);
+        }
+    }
+
+
+
+    
+
+
 }
 
 

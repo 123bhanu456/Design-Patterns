@@ -12,8 +12,8 @@ public class Blocked implements State{
     }
 
     @Override
-    public void pay() {
-        //
+    public void pay(int seat_id) {
+        System.out.println("successfully booked SeatNo - "+seat_id);
         seat.setState(seat.getBooked());
     }
 
