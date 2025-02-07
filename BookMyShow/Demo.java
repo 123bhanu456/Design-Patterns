@@ -1,13 +1,8 @@
 import Booking.*;
 import DataBase.MovieStorage;
 import DataBase.ShowStorage;
-import Payment.Credit;
-import Payment.Debit;
-import Payment.PaymentFactory;
-import Payment.Upi;
+import Payment.*;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,21 +15,22 @@ public class Demo {
        Movie interstellar=new Movie(1,"interstellar",Genre.SCI_FI,3,4.5);
        Movie jersey=new Movie(2,"jersey",Genre.DRAMA,3,4.5);
 
-       shiva.initMovieScreen(1,5,5,ScreenType._3D);
-       shiva.initMovieScreen(2,5,5, ScreenType._2D);
+       shiva.initializeScreen(1,5,5,ScreenType._3D);
+       shiva.initializeScreen(2,5,5, ScreenType._2D);
 
-       x.initMovieScreen(1,5,5,ScreenType._3D);
-       x.initMovieScreen(2,5,5, ScreenType._2D);
+       x.initializeScreen(1,5,5,ScreenType._3D);
+       x.initializeScreen(2,5,5, ScreenType._2D);
 
-       y.initMovieScreen(1,5,5,ScreenType._3D);
-       y.initMovieScreen(2,5,5, ScreenType._2D);
+       y.initializeScreen(1,5,5,ScreenType._3D);
+       y.initializeScreen(2,5,5, ScreenType._2D);
 
-       shiva.setCurrent_movies(interstellar);
-       shiva.setCurrent_movies(jersey);
+       shiva.addMovie(interstellar);
+       shiva.addMovie(jersey);
 
-       x.setCurrent_movies(jersey);
+       x.addMovie(jersey);
+       x.addMovie(interstellar);
 
-       y.setCurrent_movies(interstellar);
+       y.addMovie(interstellar);
 
 
 
@@ -44,8 +40,10 @@ public class Demo {
        Show show4=new Show(3,interstellar,y,"3:00");
 
 
-       ShowStorage showStorage=new ShowStorage();
-       MovieStorage movieStorage =new MovieStorage();
+       ShowStorage showStorage=ShowStorage.getInstance();
+       MovieStorage movieStorage=MovieStorage.getInstance();
+
+
 
        movieStorage.addMovie(interstellar);
        movieStorage.addMovie(jersey);
@@ -56,9 +54,12 @@ public class Demo {
        showStorage.addShow(show4);
 
        User bhanu=new User(1,"9494258876","Bhanu","Abc@yo.com");
-       PaymentFactory upi=new Upi();
-       PaymentFactory credit=new Credit();
-       PaymentFactory debit=new Debit();
+       PaymentFactory paymentFactory=new PaymentFactory();
+       Payment upi= paymentFactory.getPayemntObj(PaymentMethod.UPI);
+       Payment credit= paymentFactory.getPayemntObj(PaymentMethod.CREDIT);
+       Payment debit= paymentFactory.getPayemntObj(PaymentMethod.DEBIT);
+
+
 
        Scanner scanner = new Scanner(System.in);
 
@@ -104,7 +105,7 @@ public class Demo {
        System.out.println("1 -UPI  :  2-CreditCard   :  3-DebitCard");
 
        int pay_opt=scanner.nextInt();
-       PaymentFactory f;
+       Payment f;
 
        if(pay_opt==1)f=upi;
        else if(pay_opt==2)f=credit;
@@ -121,19 +122,9 @@ public class Demo {
 
 
 
-//
-//       List<Integer>arr=new ArrayList<>(); arr.add(7);arr.add(9);
-//       List<Integer>arr2=new ArrayList<>(); arr2.add(8);arr2.add(9);arr2.add(10);
 
 
-//       bhanu.show_available_seats(show1);
-//       bhanu.book_show(show1,arr,upi);
-//
-//       System.out.println();
-//       bhanu.book_show(show1,arr2,upi);
-//
-//       System.out.println();
-//       bhanu.book_show(show1,5,upi);
+
 
 
 

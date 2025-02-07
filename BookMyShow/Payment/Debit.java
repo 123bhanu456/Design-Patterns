@@ -1,8 +1,9 @@
 package Payment;
 
-public class Debit extends PaymentFactory{
+public class Debit implements Payment{
+
     @Override
-    public String paymentMethod() {
-        return "DebitCard";
+    public void pay() {
+        System.out.println("Paying through Debit");
     }
 }

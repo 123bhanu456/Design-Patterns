@@ -2,20 +2,19 @@ package Booking;
 
 import java.util.*;
 
-import Payment.PaymentFactory;
 import Seat.Seat;
 
 public class Screen implements ScreenInf {
-    int screen_id;
-    Theater theater;
-    int total_seats;
-    Map<Integer, Map<Integer, Seat>> seatLayout;
-    Movie movie;
-    int rows;
-    int columns;
-    int cur_seat_id;
-    int price;
-    ScreenType screenType;
+    private int screen_id;
+    private Theater theater;
+    private int total_seats;
+    private Map<Integer, Map<Integer, Seat>> seatLayout;
+    private Movie movie;
+    private int rows;
+    private int columns;
+    private int cur_seat_id;
+    private int price;
+    private ScreenType screenType;
 
 
     Screen(int screen_id,int rows, int columns,ScreenType screenType) {
@@ -124,6 +123,7 @@ public class Screen implements ScreenInf {
     @Override
     public void setMovie(Movie movie){
         this.movie=movie;
+
     }
 
     @Override
@@ -139,7 +139,29 @@ public class Screen implements ScreenInf {
     }
 
 
-    public ScreenType getType() {
+    public ScreenType getSeatType() {
         return screenType;
     }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public int getPrice(){
+        return price;
+    }
+
+    public int getTotal_seats(){
+        return total_seats;
+    }
+
+    public int getScreen_id(){
+        return screen_id;
+    }
+
+
+
+
+
+
 }

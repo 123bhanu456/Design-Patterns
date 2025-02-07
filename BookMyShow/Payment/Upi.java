@@ -1,8 +1,9 @@
 package Payment;
 
-public class Upi extends PaymentFactory{
+public class Upi implements Payment{
+
     @Override
-    public String paymentMethod() {
-        return "UPI";
+    public void pay() {
+        System.out.println("Paying through Upi");
     }
 }

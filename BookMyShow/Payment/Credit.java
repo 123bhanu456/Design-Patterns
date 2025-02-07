@@ -1,8 +1,10 @@
 package Payment;
 
-public class Credit extends PaymentFactory{
+public class Credit implements Payment{
+
+
     @Override
-    public String paymentMethod() {
-        return "CreditCard";
+    public void pay() {
+        System.out.println("Paying through Credit");
     }
 }

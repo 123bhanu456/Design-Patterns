@@ -1,12 +1,17 @@
 package Payment;
 
-public abstract class PaymentFactory {
+public class PaymentFactory {
 
-    public void pay(){
-        String mode=paymentMethod();
-        System.out.println("Paying using "+mode);
+    public Payment getPayemntObj(PaymentMethod paymentMethod){
+         if(paymentMethod==PaymentMethod.UPI)return new Upi();
+         else if(paymentMethod==PaymentMethod.CREDIT)return new Credit();
+         else if(paymentMethod==PaymentMethod.DEBIT)return new Debit();
 
+         return null;
     }
-    public abstract String paymentMethod();
+
+
+
+
 
 }
