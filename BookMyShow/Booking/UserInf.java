@@ -1,6 +1,5 @@
-package Notification;
+package Booking;
 
-import Booking.Show;
 import Payment.Payment;
 
 import java.util.List;

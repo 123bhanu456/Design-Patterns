@@ -1,7 +1,8 @@
 package Notification;
 
-import Booking.Screen;
+
+import Booking.Show;
 
 public interface Observer {
-    void notification(Screen screen);
+    void notification(Show show);
 }

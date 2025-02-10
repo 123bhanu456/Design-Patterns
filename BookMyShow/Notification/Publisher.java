@@ -1,6 +1,4 @@
-package Booking;
-
-import Notification.Observer;
+package Notification;
 
 public interface Publisher {
 

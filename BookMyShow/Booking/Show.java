@@ -1,6 +1,12 @@
 package Booking;
 
-public class Show implements ShowInf{
+import Notification.Observer;
+import Notification.Publisher;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Show implements ShowInf, Publisher {
     private int show_id;
     private Movie movie;
     private Theater theater;
@@ -8,12 +14,15 @@ public class Show implements ShowInf{
     private Screen screen;
     private int available_seats;
     private int price;
+    List<Observer> obs;
+
     public Show(int show_id, Movie movie, Theater theater, String time){
 
         this.show_id=show_id;
         this.movie=movie;
         this.theater=theater;
         this.time=time;
+        obs=new ArrayList<Observer>();
 
         this.screen=theater.getScreenForMovie(movie);
         if(screen!=null) {
@@ -70,4 +79,20 @@ public class Show implements ShowInf{
     }
 
 
+    @Override
+    public void adduser(Observer user) {
+        obs.add(user);
+    }
+
+    @Override
+    public void removeUser(Observer user) {
+        obs.remove(user);
+    }
+
+    @Override
+    public void update() {
+        for(Observer user :obs){
+            user.notification(this);
+        }
+    }
 }

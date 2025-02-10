@@ -1,11 +1,10 @@
-package Notification;
-import Booking.Screen;
-import Booking.Show;
+package Booking;
+import Notification.Observer;
 import Payment.Payment;
 
 import java.util.List;
 
-public class User implements UserInf,Observer {
+public class User implements UserInf, Observer {
      private int user_id;
      private String name;
      private String email;
@@ -66,8 +65,8 @@ public class User implements UserInf,Observer {
     }
 
     @Override
-    public void notification(Screen screen){
-        System.out.println("Received an email/sms/whatsapp regarding changes int the "+screen.getMovie()+" movie");
+    public void notification(Show show){
+        System.out.println("Received an email/sms/whatsapp regarding changes int the "+show.getMovie()+" movie");
     }
 
 

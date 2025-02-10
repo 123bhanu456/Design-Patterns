@@ -1,7 +1,7 @@
 import Booking.*;
 import DataBase.MovieStorage;
 import DataBase.ShowStorage;
-import Notification.User;
+import Booking.User;
 import Payment.*;
 
 import java.util.List;

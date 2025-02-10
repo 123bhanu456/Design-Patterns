@@ -5,7 +5,7 @@ import java.util.*;
 import Notification.Observer;
 import Seat.Seat;
 
-public class Screen implements ScreenInf, Publisher {
+public class Screen implements ScreenInf {
     private int screen_id;
     private Theater theater;
     private int total_seats;
@@ -16,7 +16,7 @@ public class Screen implements ScreenInf, Publisher {
     private int cur_seat_id;
     private int price;
     private ScreenType screenType;
-    List<Observer>obs;
+
 
 
     Screen(int screen_id,int rows, int columns,ScreenType screenType) {
@@ -25,7 +25,7 @@ public class Screen implements ScreenInf, Publisher {
         this.columns=columns;
         total_seats = rows * columns;
         seatLayout = new HashMap<>();
-        obs=new ArrayList<Observer>();
+
         this.movie=null;
         this.screenType=screenType;
         if(screenType==ScreenType.IMAX)price=300;
@@ -163,20 +163,5 @@ public class Screen implements ScreenInf, Publisher {
     }
 
 
-    @Override
-    public void adduser(Observer user) {
-        obs.add(user);
-    }
 
-    @Override
-    public void removeUser(Observer user) {
-        obs.remove(user);
-    }
-
-    @Override
-    public void update() {
-        for(Observer user :obs){
-            user.notification(this);
-        }
-    }
 }
