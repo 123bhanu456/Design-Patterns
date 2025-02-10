@@ -1,6 +1,7 @@
 import Booking.*;
 import DataBase.MovieStorage;
 import DataBase.ShowStorage;
+import Notification.User;
 import Payment.*;
 
 import java.util.List;
@@ -112,6 +113,29 @@ public class Demo {
        else f=debit;
 
        bhanu.book_show(selectedShow,seat,f);
+
+
+
+
+//       Runnable r1=()->{
+//          System.out.println("user1 booking");
+//          show1.bookShow(1);
+//       };
+//
+//
+//       Runnable r2=()->{
+//          System.out.println("user2 booking");
+//          show1.bookShow(1);
+//       };
+//
+//       Thread t1=new Thread(r1);
+//       Thread t2=new Thread(r2);
+//
+//       t1.start();
+//       t2.start();
+
+
+
 
 
 

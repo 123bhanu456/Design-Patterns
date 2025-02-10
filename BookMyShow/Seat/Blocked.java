@@ -7,8 +7,9 @@ public class Blocked implements State{
         this.seat=seat;
     }
     @Override
-    public void book_seat() {
-        System.out.println("Go back to previous inorder to book seat");
+    public boolean book_seat() {
+        System.out.println("The seat is already blocked");
+        return false;
     }
 
     @Override

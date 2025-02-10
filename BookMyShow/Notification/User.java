@@ -1,15 +1,15 @@
-package Booking;
+package Notification;
+import Booking.Screen;
+import Booking.Show;
 import Payment.Payment;
 
 import java.util.List;
 
-public class User implements UserInf {
+public class User implements UserInf,Observer {
      private int user_id;
      private String name;
      private String email;
      private String phoneNumber;
-
-
 
 
     public User(int user_id, String phoneNumber, String name, String email){
@@ -65,6 +65,12 @@ public class User implements UserInf {
         show.display_seat_after_booking();
     }
 
+    @Override
+    public void notification(Screen screen){
+        System.out.println("Received an email/sms/whatsapp regarding changes int the "+screen.getMovie()+" movie");
+    }
+
+
     public void show_available_seats(Show show){
         if(show.getScreen()==null){
             System.out.println("No movie present in this theater");
@@ -96,4 +102,6 @@ public class User implements UserInf {
     public void setEmail(String email) {
         this.email = email;
     }
+
+
 }

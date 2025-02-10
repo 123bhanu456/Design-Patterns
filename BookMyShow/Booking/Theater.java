@@ -1,5 +1,7 @@
 package Booking;
 
+import Notification.Observer;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +18,7 @@ public class Theater implements TheaterInf{
     private Map<Movie,Screen> map_MovieToScreen;
 
 
+
     public Theater(int Theater_id, int max_total_Screens, String name, String location) {
         this.name = name;
         this.location = location;
@@ -23,6 +26,7 @@ public class Theater implements TheaterInf{
         this.max_total_Screens = max_total_Screens;
         screens = new ArrayList<Screen>(max_total_Screens);
         movies = new ArrayList<Movie>(max_total_Screens);
+
         map_MovieToScreen = new HashMap<>();
     }
 
@@ -64,8 +68,8 @@ public class Theater implements TheaterInf{
             System.out.println("theater is full");
             return;
         }
-        s.blockSeat(sead_id);
-        s.pay();
+       if(s.blockSeat(sead_id))s.pay();
+
     }
 
 
@@ -96,6 +100,7 @@ public class Theater implements TheaterInf{
     public String getName() {
         return name;
     }
+
 
 
 }

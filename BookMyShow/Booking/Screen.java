@@ -2,9 +2,10 @@ package Booking;
 
 import java.util.*;
 
+import Notification.Observer;
 import Seat.Seat;
 
-public class Screen implements ScreenInf {
+public class Screen implements ScreenInf, Publisher {
     private int screen_id;
     private Theater theater;
     private int total_seats;
@@ -15,6 +16,7 @@ public class Screen implements ScreenInf {
     private int cur_seat_id;
     private int price;
     private ScreenType screenType;
+    List<Observer>obs;
 
 
     Screen(int screen_id,int rows, int columns,ScreenType screenType) {
@@ -23,6 +25,7 @@ public class Screen implements ScreenInf {
         this.columns=columns;
         total_seats = rows * columns;
         seatLayout = new HashMap<>();
+        obs=new ArrayList<Observer>();
         this.movie=null;
         this.screenType=screenType;
         if(screenType==ScreenType.IMAX)price=300;
@@ -46,7 +49,7 @@ public class Screen implements ScreenInf {
 
 
     @Override
-    public void blockSeat(int seat_id) {
+    public synchronized boolean blockSeat(int seat_id) {
         int r=seat_id/rows+1;
         int c=seat_id%rows;
         if(seat_id%rows==0){
@@ -56,7 +59,7 @@ public class Screen implements ScreenInf {
         Seat seat = seatLayout.get(r).get(c);
 
         this.cur_seat_id=seat_id;
-        seat.book_seat();
+        return seat.book_seat();
 
 
     }
@@ -160,8 +163,20 @@ public class Screen implements ScreenInf {
     }
 
 
+    @Override
+    public void adduser(Observer user) {
+        obs.add(user);
+    }
 
+    @Override
+    public void removeUser(Observer user) {
+        obs.remove(user);
+    }
 
-
-
+    @Override
+    public void update() {
+        for(Observer user :obs){
+            user.notification(this);
+        }
+    }
 }

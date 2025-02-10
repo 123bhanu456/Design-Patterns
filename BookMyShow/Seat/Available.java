@@ -7,9 +7,10 @@ public class Available implements State{
         this.seat=seat;
     }
     @Override
-    public void book_seat() {
+    public boolean book_seat() {
         System.out.println("Booking seat_id - " + seat.getSeat_id());
         seat.setState(seat.getBlocked());
+        return true;
     }
 
     @Override

@@ -19,8 +19,8 @@ public class Seat {
       this.number=number;
    }
 
-    public void book_seat(){
-      state.book_seat();
+    public boolean book_seat(){
+      return state.book_seat();
    }
 
     public void pay(){

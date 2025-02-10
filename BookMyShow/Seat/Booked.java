@@ -7,13 +7,14 @@ public class Booked implements State {
         this.seat=seat;
     }
     @Override
-    public void book_seat() {
-        System.out.println("This seat is already booked");
+    public boolean book_seat() {
+        System.out.println("This seat is already booked,can not book again");
+        return false;
     }
 
     @Override
     public void pay(int seat_id) {
-        System.out.println("This seat is already booked");
+        System.out.println("This seat is already booked can not pay");
     }
 
     @Override
