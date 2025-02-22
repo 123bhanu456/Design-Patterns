@@ -12,4 +12,5 @@ public interface BookingServiceInf {
     Car bookCar(Booking booking);
 
     List<Booking>showBookings();
+    Booking getBookingById(String bookingId);
 }

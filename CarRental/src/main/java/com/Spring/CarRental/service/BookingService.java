@@ -43,7 +43,7 @@ public class BookingService implements BookingServiceInf {
        User user=userService.getUserById(userId);
 
        if(car==null){
-           throw new CarDoesnotExist("Car with id "+carId+" does not Exist");
+           throw new CarDoesnotExist("Car with id "+carId+" does not Exist , Look CareFully Dude");
        }
        else if(user==null){
            throw new UserNotRegistered("User with id "+userId+" should register");
@@ -53,10 +53,7 @@ public class BookingService implements BookingServiceInf {
        CarState carState=car.getCarState();
 
        if(carState==CarState.BOOKED){
-           throw new CarAlreadyBooked("Car with id "+carId+" is already booked");
-       }
-       else if(carState==CarState.IN_USE){
-           throw new CarInUse("Car with id "+carId+" is already in use by someone else");
+           throw new CarAlreadyBooked("Car with id "+carId+" is already booked, sorry better Luck next time");
        }
 
        car.setCarState(CarState.BOOKED);
@@ -82,6 +79,11 @@ public class BookingService implements BookingServiceInf {
     @Override
     public List<Booking> showBookings() {
         return bookingRepo.findAll();
+    }
+
+    @Override
+    public Booking getBookingById(String bookingId) {
+        return bookingRepo.findById(bookingId).get();
     }
 
 

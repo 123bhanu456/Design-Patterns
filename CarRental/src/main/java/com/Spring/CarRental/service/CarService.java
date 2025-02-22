@@ -62,7 +62,7 @@ public class CarService implements CarServiceInf{
 
     @Override
     @Transactional
-    public Car updateCar(Car car) {
-        return carRepo.save(car);
+    public void updateCar(Car car) {
+        carRepo.save(car);
     }
 }

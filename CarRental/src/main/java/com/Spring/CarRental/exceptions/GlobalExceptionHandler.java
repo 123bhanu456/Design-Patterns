@@ -46,6 +46,11 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
+    @ExceptionHandler(CarAlreadyReturned.class)
+    public ResponseEntity<String>handleReturn(CarAlreadyReturned e){
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+    }
+
 
 
 
