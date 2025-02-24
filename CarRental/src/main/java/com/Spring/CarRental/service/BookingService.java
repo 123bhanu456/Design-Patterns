@@ -5,7 +5,6 @@ import com.Spring.CarRental.Entity.state.State;
 import com.Spring.CarRental.Repo.BookingRepo;
 import com.Spring.CarRental.exceptions.CarAlreadyBooked;
 import com.Spring.CarRental.exceptions.CarDoesnotExist;
-import com.Spring.CarRental.exceptions.CarInUse;
 import com.Spring.CarRental.exceptions.UserNotRegistered;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -18,16 +18,13 @@ public class Car {
     private State available;
     @JsonIgnore
     private State booked;
-    @JsonIgnore
-    private State in_use;
 
     @JsonIgnore
     private State state;
 
-    public Car(@Qualifier("available")State available ,@Qualifier("booked")State booked,@Qualifier("inUse") State in_use){
+    public Car(@Qualifier("available")State available ,@Qualifier("booked")State booked){
         this.available=available;
         this.booked=booked;
-        this.in_use=in_use;
 
         state=available;
         carState=CarState.AVAILABLE;
@@ -48,14 +45,6 @@ public class Car {
 
     public void setBooked(State booked) {
         this.booked = booked;
-    }
-
-    public State getIn_use() {
-        return in_use;
-    }
-
-    public void setIn_use(State in_use) {
-        this.in_use = in_use;
     }
 
     public State getState() {
