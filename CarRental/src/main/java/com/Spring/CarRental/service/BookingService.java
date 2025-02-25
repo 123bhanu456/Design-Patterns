@@ -1,7 +1,7 @@
 package com.Spring.CarRental.service;
 
 import com.Spring.CarRental.Entity.*;
-import com.Spring.CarRental.Entity.state.State;
+import com.Spring.CarRental.state.State;
 import com.Spring.CarRental.Repo.BookingRepo;
 import com.Spring.CarRental.exceptions.CarAlreadyBooked;
 import com.Spring.CarRental.exceptions.CarDoesnotExist;
@@ -15,10 +15,10 @@ import java.util.List;
 
 @Service
 public class BookingService implements BookingServiceInf {
-    BookingRepo bookingRepo;
-    CarService carService;
-    UserService userService;
-    BookingTimeDetailsService bookingTimeDetailsService;
+    private final BookingRepo bookingRepo;
+    private final CarService carService;
+    private final UserService userService;
+    private final BookingTimeDetailsService bookingTimeDetailsService;
 
     State booked;
     @Autowired

@@ -1,6 +1,6 @@
 package com.Spring.CarRental.Entity;
 
-import com.Spring.CarRental.Entity.state.State;
+import com.Spring.CarRental.state.State;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.annotation.Id;

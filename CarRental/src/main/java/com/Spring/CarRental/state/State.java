@@ -1,4 +1,4 @@
-package com.Spring.CarRental.Entity.state;
+package com.Spring.CarRental.state;
 
 import com.Spring.CarRental.Entity.Car;
 

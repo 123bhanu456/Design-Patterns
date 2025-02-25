@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 
 @Service
 public class ReturnService implements ReturnServiceInf {
-    private BookingTimeDetailsService bookingTimeDetailsService;
-    private CarService carService;
-    private BookingService bookingService;
+    private final BookingTimeDetailsService bookingTimeDetailsService;
+    private final CarService carService;
+    private final BookingService bookingService;
     private static final double HOURLY_RATE = 10.0;
 
 

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Service
 public class BookingTimeDetailsService implements BookingTimeDetailsServiceInf{
 
-    BookingTimeDetailsRepo bookingTimeDetailsRepo;
+    private final BookingTimeDetailsRepo bookingTimeDetailsRepo;
 
     @Autowired
     public BookingTimeDetailsService(BookingTimeDetailsRepo bookingTimeDetailsRepo){
